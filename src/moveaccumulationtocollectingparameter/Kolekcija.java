@@ -56,16 +56,36 @@ public class Kolekcija {
     }
     @Override
     public String toString(){
-        String rezultat = new String();
-        rezultat+="--- "+getEkipa()+" ---\n";
+        StringBuffer rezultat = new StringBuffer("");
+        ispisiSve(rezultat);
+        return rezultat.toString();
+    }
+    public void ispisiEkipu(StringBuffer r){
+        r.append("--- ");
+        r.append(getEkipa());
+        r.append(" ---\n");
+    }
+    public void ispisiSve(StringBuffer r){
+        ispisiEkipu(r);
+        ispisiIgrace(r);
+        ispisiTrenera(r);
+        ispisiKraj(r);
+    }
+    public void ispisiIgrace(StringBuffer r){
         Iterator it = igraci.iterator();
         while(it.hasNext()){
             Kolekcija k = (Kolekcija) it.next();
-            rezultat += k.toString();
+            k.ispisiSve(r);
         }
+
+    }
+    public void ispisiTrenera(StringBuffer r){
         if(!trener.equals(""))
-            rezultat+=trener;
-        rezultat += "\n--- "+getEkipa()+" ---";
-        return rezultat.toString();
+            r.append(trener);
+    }
+     public void ispisiKraj(StringBuffer r){
+        r.append("--- ");
+        r.append(getEkipa());
+        r.append(" ---\n");
     }
 }
