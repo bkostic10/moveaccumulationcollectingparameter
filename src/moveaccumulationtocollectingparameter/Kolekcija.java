@@ -6,6 +6,7 @@
 package moveaccumulationtocollectingparameter;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -56,14 +57,15 @@ public class Kolekcija {
     @Override
     public String toString(){
         String rezultat = new String();
-        rezultat += "--- "+getEkipa()+" ---\n";
-        for(int i = 0;i<igraci.size();i++){
-            rezultat+=igraci.get(i).toString();
+        rezultat+="--- "+getEkipa()+" ---\n";
+        Iterator it = igraci.iterator();
+        while(it.hasNext()){
+            Kolekcija k = (Kolekcija) it.next();
+            rezultat += k.toString();
         }
         if(!trener.equals(""))
             rezultat+=trener;
         rezultat += "\n--- "+getEkipa()+" ---";
-        return rezultat;
+        return rezultat.toString();
     }
-
 }
