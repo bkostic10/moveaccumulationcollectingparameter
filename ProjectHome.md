@@ -1,0 +1,1 @@
+Move Accumulation To Collecting Parameter
